@@ -9,6 +9,31 @@ L'application est écrite en Java et distribuée sous forme de JAR exécutable.
 
 Le protocole applicatif est décrit dans [docs/PROTOCOL.md](docs/PROTOCOL.md).
 
+
+## Règles du jeu
+
+Cette section précise les règles du quiz, complémentaires à la [spécification du protocole](docs/PROTOCOL.md).
+
+- **Nombre de questions (`N`) :** Une partie comporte `5` questions tirées aléatoirement. Si un filtre de thème ou de sous-thème contient moins de `5` questions, la partie se joue sur toutes les questions disponibles pour ce filtre.
+
+
+- **Temps de réponse :** Chaque question dispose d'un délai maximum de `20` secondes. Elle se clôture plus tôt dès que tous les joueurs présents ont répondu.
+
+
+- **Attribution des points :** Seules les bonnes réponses rapportent des points, en fonction de l'ordre d'arrivée parmi les bonnes réponses :
+  - 1er bonne réponse : `1000` points
+  - 2e bonne réponse : `800` points
+  - 3e bonne réponse : `600` points
+  - 4e bonne réponse : `400` points
+  - 5e bonne réponse et suivantes : `200` points
+  - Mauvaise réponse ou délai dépassé (`TIMEOUT`) : `0` point
+
+
+- **Classement et départage :** Les joueurs sont classés par score décroissant. En cas d'égalité de score, le départage se fait par ordre alphabétique croissant du pseudo, sans tenir compte de la casse (`Alice` est devant `bob`).
+
+
+- **Fin de partie :** Après l'affichage du podium (`END`), tous les joueurs reviennent automatiquement dans le lobby et les scores repartent à `0` à la partie suivante.
+
 ## Prérequis
 
 - [Java 25](https://openjdk.org/projects/jdk/25/)
